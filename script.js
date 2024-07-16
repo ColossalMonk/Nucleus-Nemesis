@@ -130,6 +130,9 @@ let projectiles = [];
 let enemies = [];
 let particles = [];
 
+// Initializing Interval Variables
+let intervalVar;
+
 // Initialize game state
 function init() {
     player = new Player(x, y, 10, 'white');
@@ -143,7 +146,7 @@ function init() {
 
 // Spawn enemies at regular intervals
 function spawnEnemies() {
-    setInterval(() => {
+    intervalVar = setInterval(() => {        
         const radius = Math.random() * (30 - 4) + 4;
 
         let x,y; 
@@ -214,6 +217,7 @@ function animate() {
             cancelAnimationFrame(animationId);
             modalElement.style.display = 'flex';
             finalScoreElement.innerHTML = score;
+            clearInterval(intervalVar);
         }
         
         // Check for collision with projectiles
