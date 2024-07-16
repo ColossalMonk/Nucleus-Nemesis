@@ -1,4 +1,4 @@
-# Nucleus-Nemesis <img src="https://github.com/ColossalMonk/Nucleus-Nemesis/blob/main/Assets/Logo.png" width="150" height="150" align="right">
+# Nucleus-Nemesis <img src="https://github.com/ColossalMonk/Nucleus-Nemesis/blob/main/Logo.png" width="150" height="150" align="right">
 
 **Tagline:** _"Defend the Core, Annihilate the Swarm!"_
 
