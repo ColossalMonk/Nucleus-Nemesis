@@ -133,6 +133,9 @@ let particles = [];
 // Initializing Interval Variables
 let intervalVar;
 
+// Initalizing Timeout Variables
+let projectileTimeoutVar, clearTimeoutVar, deleteTimeoutVar;
+
 // Initialize game state
 function init() {
     player = new Player(x, y, 10, 'white');
@@ -200,7 +203,7 @@ function animate() {
 
         // Remove projectiles that go off-screen
         if (projectile.x + projectile.radius < 0 || projectile.x - projectile.radius > canvas.width || projectile.y + projectile.radius < 0 || projectile.y - projectile.radius > canvas.height){
-            setTimeout(() => {
+            projectileTimeoutVar = setTimeout(() => {
                 projectiles.splice(projectileIndex, 1);
             }, 0);
         }
@@ -218,6 +221,9 @@ function animate() {
             modalElement.style.display = 'flex';
             finalScoreElement.innerHTML = score;
             clearInterval(intervalVar);
+            clearTimeout(projectileTimeoutVar);
+            clearTimeout(clearTimeoutVar);
+            clearTimeout(deleteTimeoutVar);
         }
         
         // Check for collision with projectiles
@@ -240,7 +246,7 @@ function animate() {
                     gsap.to(enemy, {
                         radius: enemy.radius - 10
                     });
-                    setTimeout(() => {
+                    clearTimeoutVar = setTimeout(() => {
                         projectiles.splice(projectileIndex, 1);                    
                     }, 0);
                 }
@@ -249,7 +255,7 @@ function animate() {
                     scoreElement.innerHTML = score;
 
                     // Remove enemy and projectile from scene
-                    setTimeout(() => {
+                    deleteTimeoutVar = setTimeout(() => {
                         enemies.splice(enemyIndex, 1);
                         projectiles.splice(projectileIndex, 1);                    
                     }, 0);
